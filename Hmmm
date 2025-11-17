@@ -1,0 +1,220 @@
+Mont Carlo - Simple Site (GitHub Pages)
+
+ملفّات الموقع:
+
+index.html  --> الصفحة الرئيسية (منتجات القطاعي + روابط)
+
+wholesale.html --> صفحة الجملة (محمية بكلمة مرور client-side)
+
+/images/   --> فولدر تحطي فيه صور المنتجات (product1.jpg ... product4.jpg)
+
+
+الخطوات للنشر على GitHub Pages:
+
+1. اعملي repository جديد اسمه montcarlo-site (أو أي اسم تحبي). اختاري Public.
+
+
+2. ضيفي الملفات index.html و wholesale.html و فولدر images مع الصور (product1.jpg..product4.jpg).
+
+
+3. اذهبي إلى Settings -> Pages -> Source = main branch -> / (root) -> Save. هيطلع لك رابط الموقع https://USERNAME.github.io/montcarlo-site/.
+
+
+4. افتحي الرابط وشوفي الموقع مباشر.
+
+
+
+تعديلات سريعة:
+
+استبدلي PHONE_NUMBER في الكود برقمك بصيغة دولية بدون +, مثال لمصر: 20XXXXXXXXX
+
+لو عايزة تغيّري باسورد الجملة: افتحي wholesale.html وعدّلي قيمة المتغيّر const WHOLESALE_PASSWORD = '3mha'.
+
+لإضافة منتج جديد: افتحي index.html وعدلي قسم المنتجات (انسخي بلوك منتج جديد وغير الاسم، الصورة، الوصف، السعر).
+
+
+===== index.html =====
+
+<!doctype html>
+
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mont Carlo - أحذية حريمي</title>
+  <style>
+    :root{--accent:#1f2937;--muted:#6b7280}
+    body{font-family:Arial, Helvetica, sans-serif;direction:rtl;margin:0;background:#f7f7f7;color:#111}
+    .container{max-width:1000px;margin:20px auto;padding:16px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;font-size:26px}
+    .banner{background:#fff;border-radius:10px;padding:18px;margin:16px 0;display:flex;gap:16px;align-items:center}
+    .banner img{width:220px;height:150px;object-fit:cover;border-radius:8px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:10px}
+    .card{background:#fff;border-radius:8px;padding:12px;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+    .card img{width:100%;height:220px;object-fit:cover;border-radius:6px}
+    .price{color:var(--accent);font-weight:700;margin-top:8px}
+    .btn{display:inline-block;padding:10px 12px;border-radius:8px;text-decoration:none}
+    .btn-whatsapp{background:#25D366;color:#fff}
+    .btn-link{background:transparent;border:1px solid #ddd;color:#111}
+    footer{text-align:center;color:var(--muted);margin:24px 0}
+    nav a{margin-left:10px;text-decoration:none;color:var(--accent)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Mont Carlo</div>
+      <nav>
+        <a href="/montcarlo-site/">الصفحة الرئيسية</a>
+        <a href="/montcarlo-site/wholesale.html">صفحة الجملة</a>
+      </nav>
+    </header><div class="banner">
+  <img src="images/product1.jpg" alt="Mont Carlo - Banner">
+  <div>
+    <h2>أحذية حريمي من مصنع Mont Carlo</h2>
+    <p style="color:var(--muted)">خامات ممتازة — تصاميم مريحة وجذابة — الدفع عند الاستلام</p>
+    <p><a class="btn btn-link" href="/montcarlo-site/wholesale.html">صفحة الجملة (للموزعين)</a></p>
+  </div>
+</div>
+
+<h3>الموديلات المتاحة</h3>
+<div class="grid" id="products">
+
+  <!-- منتج 1 -->
+  <div class="card">
+    <img src="images/product1.jpg" alt="موديل 1">
+    <h4>Mont Carlo — Rosa</h4>
+    <p style="color:var(--muted);font-size:14px">حذاء حريمي أنيق، خامة جلد صناعي مضاد للخدش، مناسب كاجوال ورسمى.</p>
+    <div class="price">سعر القطاعي: 350 جنيه</div>
+    <p style="margin-top:8px">المقاسات: 36 - 41</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=اهلا%20Mont%20Carlo%20%7C%20عايزة%20اطلب%20موديل%20Rosa%20%20(المقاس)%20—%20الكمية%20—%20الاسم%20—%20العنوان" target="_blank">اطلب عبر واتساب (دفع عند الاستلام)</a>
+  </div>
+
+  <!-- منتج 2 -->
+  <div class="card">
+    <img src="images/product2.jpg" alt="موديل 2">
+    <h4>Mont Carlo — Bella</h4>
+    <p style="color:var(--muted);font-size:14px">تصميم مريح للمشي اليومي، نعل مطاطي متين وخفيف.</p>
+    <div class="price">سعر القطاعي: 280 جنيه</div>
+    <p style="margin-top:8px">المقاسات: 36 - 41</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=اهلا%20Mont%20Carlo%20%7C%20عايزة%20اطلب%20موديل%20Bella%20%20(المقاس)%20—%20الكمية%20—%20الاسم%20—%20العنوان" target="_blank">اطلب عبر واتساب (دفع عند الاستلام)</a>
+  </div>
+
+  <!-- منتج 3 -->
+  <div class="card">
+    <img src="images/product3.jpg" alt="موديل 3">
+    <h4>Mont Carlo — Lila</h4>
+    <p style="color:var(--muted);font-size:14px">موديل عصري للسهرة والمناسبات، طلاء نهائي مقاوم للخدش.</p>
+    <div class="price">سعر القطاعي: 410 جنيه</div>
+    <p style="margin-top:8px">المقاسات: 36 - 41</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=اهلا%20Mont%20Carlo%20%7C%20عايزة%20اطلب%20موديل%20Lila%20%20(المقاس)%20—%20الكمية%20—%20الاسم%20—%20العنوان" target="_blank">اطلب عبر واتساب (دفع عند الاستلام)</a>
+  </div>
+
+  <!-- منتج 4 -->
+  <div class="card">
+    <img src="images/product4.jpg" alt="موديل 4">
+    <h4>Mont Carlo — Sofia</h4>
+    <p style="color:var(--muted);font-size:14px">موديل مريح للعمل اليومي مع لمسة أناقة، خامة قابلة للتنفس.</p>
+    <div class="price">سعر القطاعي: 320 جنيه</div>
+    <p style="margin-top:8px">المقاسات: 36 - 41</p>
+    <a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=اهلا%20Mont%20Carlo%20%7C%20عايزة%20اطلب%20موديل%20Sofia%20%20(المقاس)%20—%20الكمية%20—%20الاسم%20—%20العنوان" target="_blank">اطلب عبر واتساب (دفع عند الاستلام)</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© Mont Carlo - جميع الحقوق محفوظة</p>
+  <p style="font-size:13px;color:var(--muted)">للطلبات بالجملة زوروا <a href="/montcarlo-site/wholesale.html">صفحة الجملة</a> (محميّة).</p>
+</footer>
+
+  </div>
+</body>
+</html>===== wholesale.html =====
+
+<!doctype html>
+
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mont Carlo - الجملة</title>
+  <style>
+    body{font-family:Arial, Helvetica, sans-serif;direction:rtl;background:#f7f7f7;color:#111}
+    .wrap{max-width:900px;margin:30px auto;padding:18px}
+    .card{background:#fff;padding:14px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #eee;text-align:right}
+    .muted{color:#6b7280}
+    .btn{display:inline-block;padding:8px 10px;border-radius:8px;text-decoration:none}
+    .btn-whatsapp{background:#25D366;color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="content" class="card" style="display:none">
+      <h2>قائمة أسعار الجملة - Mont Carlo</h2>
+      <p class="muted">السعر الوارد هنا للموزعين — حد أدنى للطلب يظهر لكل موديل.</p><table>
+    <thead>
+      <tr><th>موديل</th><th>عدد الأزواج/الكراتين</th><th>سعر الجملة (للزوج)</th><th>ملاحظات</th><th>طلب</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Rosa</td>
+        <td>12</td>
+        <td>260 جنيه</td>
+        <td>حد أدنى 5 كراتين</td>
+        <td><a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=طلب%20جملة%20موديل%20Rosa%20-%20الكمية%20(زوج)%20-%20الاسم%20-%20المدينة">اطلب عبر واتساب</a></td>
+      </tr>
+      <tr>
+        <td>Bella</td>
+        <td>12</td>
+        <td>210 جنيه</td>
+        <td>حد أدنى 3 كراتين</td>
+        <td><a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=طلب%20جملة%20موديل%20Bella%20-%20الكمية%20(زوج)%20-%20الاسم%20-%20المدينة">اطلب عبر واتساب</a></td>
+      </tr>
+      <tr>
+        <td>Lila</td>
+        <td>12</td>
+        <td>300 جنيه</td>
+        <td>حد أدنى 4 كراتين</td>
+        <td><a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=طلب%20جملة%20موديل%20Lila%20-%20الكمية%20(زوج)%20-%20الاسم%20-%20المدينة">اطلب عبر واتساب</a></td>
+      </tr>
+      <tr>
+        <td>Sofia</td>
+        <td>12</td>
+        <td>240 جنيه</td>
+        <td>حد أدنى 3 كراتين</td>
+        <td><a class="btn btn-whatsapp" href="https://wa.me/PHONE_NUMBER?text=طلب%20جملة%20موديل%20Sofia%20-%20الكمية%20(زوج)%20-%20الاسم%20-%20المدينة">اطلب عبر واتساب</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:14px">بعد استلام الطلب سنتواصل معكم لتأكيد الكمية وعمل الترتيبات اللازمة. الدفع عند الاستلام أو تحويل بنكي حسب الاتفاق.</p>
+</div>
+
+<div id="login" class="card">
+  <h3>دخول موزعين — إدخال كلمة المرور</h3>
+  <p class="muted">أدخل كلمة المرور لتتمكن من رؤية أسعار الجملة.</p>
+  <input id="pw" type="password" placeholder="كلمة المرور" style="padding:8px;width:70%;margin-bottom:10px;border:1px solid #ddd;border-radius:6px">
+  <button id="go" style="padding:8px 12px;border-radius:6px">دخول</button>
+  <p class="muted" style="font-size:13px;margin-top:8px">لو نسيت كلمة المرور تواصل عبر الواتساب.</p>
+</div>
+
+  </div>  <script>
+    // غيّري الباسورد هنا لو حبيت
+    const WHOLESALE_PASSWORD = '3mha';
+
+    const loginDiv = document.getElementById('login');
+    const contentDiv = document.getElementById('content');
+    document.getElementById('go').addEventListener('click', function(){
+      const val = document.getElementById('pw').value.trim();
+      if(val === WHOLESALE_PASSWORD){
+        loginDiv.style.display = 'none';
+        contentDiv.style.display = 'block';
+      } else {
+        alert('كلمة المرور غير صحيحة');
+      }
+    });
+  </script></body>
+</html><!-- نهاية المحتويات -->
