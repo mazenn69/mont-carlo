@@ -1,0 +1,10 @@
+<div class="product">
+  <h2>المنتج الأول</h2>
+  <p>الوصف أو السعر هنا</p>
+  <a href="product1.html">عرض المنتج</a>
+</div>
+<div class="product">
+  <h2>المنتج الثاني</h2>
+  <p>الوصف أو السعر هنا</p>
+  <a href="product2.html">عرض المنتج</a>
+</div>
