@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mont Carlo Footwear</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+    }
+    header {
+        background: black;
+        padding: 25px;
+        text-align: center;
+        color: white;
+        font-size: 28px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 15px;
+        padding: 20px;
+    }
+    .product {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    .product:hover {
+        transform: scale(1.03);
+    }
+    .product img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+    }
+    .product-info {
+        padding: 15px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* المنتج المنفرد */
+    .product-page {
+        display: none;
+        padding: 20px;
+    }
+    .back-btn {
+        padding: 10px 15px;
+        background: black;
+        color: white;
+        border: none;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 6px;
+    }
+    .single-img {
+        width: 100%;
+        max-width: 450px;
+        border-radius: 12px;
+        display: block;
+        margin: auto;
+    }
+    .details {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    select, input {
+        font-size: 18px;
+        padding: 10px;
+        width: 90%;
+        margin: 10px auto;
+        display: block;
+    }
+    button.order-btn {
+        width: 90%;
+        padding: 15px;
+        background: #d90000;
+        color: white;
+        border: none;
+        font-size: 20px;
+        border-radius: 10px;
+        margin: 20px auto;
+        cursor: pointer;
+        display: block;
+    }
+
+    .success {
+        font-size: 22px;
+        text-align: center;
+        padding: 20px;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<header>Mont Carlo Footwear</header>
+
+<!-- الصفحة الرئيسية -->
+<div id="home" class="products"></div>
+
+<!-- صفحة المنتج -->
+<div id="productPage" class="product-page"></div>
+
+<!-- رسالة نجاح -->
+<div id="success" class="success">تم تنفيذ الطلب وسيتم التواصل معك فوراً ❤️</div>
+
+<script>
+const PRODUCTS = [
+    { name: "Boot 1", price: 650, image: "FB_IMG_1763597467995.jpg" },
+    { name: "Boot 2", price: 700, image: "FB_IMG_1763597474017.jpg" },
+    { name: "Boot 3", price: 580, image: "FB_IMG_1763597558020.jpg" },
+    { name: "Boot 4", price: 620, image: "FB_IMG_1763597576686.jpg" }
+];
+
+const home = document.getElementById("home");
+const productPage = document.getElementById("productPage");
+const success = document.getElementById("success");
+
+function loadProducts() {
+    PRODUCTS.forEach((p, i) => {
+        home.innerHTML += `
+            <div class="product" onclick="openProduct(${i})">
+                <img src="${p.image}" alt="">
+                <div class="product-info">${p.name} - ${p.price} جنيه</div>
+            </div>
+        `;
+    });
+}
+
+function openProduct(i) {
+    const p = PRODUCTS[i];
+    home.style.display = "none";
+    productPage.style.display = "block";
+    success.style.display = "none";
+
+    productPage.innerHTML = `
+        <button class="back-btn" onclick="goBack()">رجوع</button>
+        <img class="single-img" src="${p.image}" />
+        <div class="details">
+            <p><b>${p.name}</b></p>
+            <p>السعر: ${p.price} جنيه</p>
+
+            <label>اللون:</label>
+            <select id="color">
+                <option>أسود</option>
+                <option>نبيتي</option>
+                <option>بيج</option>
+                <option>بني</option>
+            </select>
+
+            <label>المقاس:</label>
+            <select id="size">
+                <option>37</option>
+                <option>38</option>
+                <option>39</option>
+                <option>40</option>
+                <option>41</option>
+            </select>
+
+            <label>الاسم:</label>
+            <input id="uname" placeholder="اسمك">
+
+            <label>العنوان:</label>
+            <input id="address" placeholder="عنوانك">
+
+            <label>رقم التواصل:</label>
+            <input id="phone" placeholder="رقمك">
+
+            <label>علامة مميزة:</label>
+            <input id="mark" placeholder="علامة قريبة من العنوان">
+
+            <label>سعر الشحن ثابت: 50 جنيه</label>
+
+            <button class="order-btn" onclick="submitOrder(${i})">طلب الآن</button>
+        </div>
+    `;
+}
+
+function goBack() {
+    productPage.style.display = "none";
+    home.style.display = "grid";
+}
+
+function submitOrder(i) {
+    success.style.display = "block";
+    productPage.style.display = "none";
+
+    // هنا ممكن نضيف إرسال الطلب لواتساب أو تليجرام لاحقاً
+}
+
+loadProducts();
+</script>
+
+</body>
+</html>
